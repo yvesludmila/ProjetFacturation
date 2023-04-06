@@ -1,0 +1,18 @@
+.Sider {
+    width: 200px;
+    height: 525px;
+    border: 1px solid rgb(156, 156, 156);
+    background-color: rgb(230, 230, 230);
+    .menu {
+        display: block;
+        margin: 0px;
+        .List-menu {
+            margin: auto;
+        }
+        h4 {
+            padding: 15px;
+            margin: 0;
+            border: 1px solid rgb(156, 156, 156);
+        }
+    }
+}
