@@ -6,8 +6,9 @@ import {
   NotificationOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import Dashboard from "../Dashboard/Dashboard";
+// import Dashboard from "../Dashboard/Dashboard";
 import SiderMenu from "../SiderMenu/SiderMenu";
+import Client from "../ClientList/Client";
 
 const { Header, Content, Sider } = Layout;
 const items1: MenuProps["items"] = ["1", "2"].map((key) => ({
@@ -77,9 +78,10 @@ const App: React.FC = () => {
             }}
           >
             <div style={{ display: "flex", gap: "50px" }}>
+              {/* <Dashboard />
               <Dashboard />
-              <Dashboard />
-              <Dashboard />
+              <Dashboard /> */}
+              <Client />
             </div>
           </Content>
         </Layout>
