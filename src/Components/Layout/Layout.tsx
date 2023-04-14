@@ -60,6 +60,7 @@ const App: React.FC = () => {
             defaultOpenKeys={["sub1"]}
             style={{ height: "100%", borderRight: 0 }}
             items={items2}
+            
           /> */}
           <SiderMenu />
         </Sider>
@@ -68,6 +69,10 @@ const App: React.FC = () => {
             <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
           </Breadcrumb>
           <Content>
+            {/* affichena eto ny contenu client na dashboard rhf clickena leizy 
+            / nataoko par defaut ftsn io client ambany io ---- mapiasa props manao azy ---
+            -- ANTd by revy miainga eto a 
+            -- io ny tache-nlah io tsotra kely io aloh*/}
             <Client />
           </Content>
         </Layout>
