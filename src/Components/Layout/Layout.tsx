@@ -1,83 +1,31 @@
-import React from "react";
-import { Breadcrumb, Layout, Menu, theme } from "antd";
-import type { MenuProps } from "antd";
-import {
-  LaptopOutlined,
-  NotificationOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
-// import Dashboard from "../Dashboard/Dashboard";
+import { Card, Layout, Menu } from "antd";
+import Sider from "antd/es/layout/Sider";
+import { Content, Header } from "antd/es/layout/layout";
+import { Typography, Breadcrumb } from "antd";
+import "../Style/Dashboard.scss";
 import SiderMenu from "../SiderMenu/SiderMenu";
-import Client from "../ClientList/Client";
-
-const { Header, Content, Sider } = Layout;
-const items1: MenuProps["items"] = ["1", "2"].map((key) => ({
-  key,
-  label: `logo ${key}`,
-}));
-const items2: MenuProps["items"] = [
-  UserOutlined,
-  LaptopOutlined,
-  NotificationOutlined,
-].map((icon, index) => {
-  const key = String(index + 1);
-  return {
-    key: `sub${key}`,
-    icon: React.createElement(icon),
-    label: `subnav ${key}`,
-
-    children: new Array(4).fill(null).map((_, j) => {
-      const subKey = index * 4 + j + 1;
-      return {
-        key: subKey,
-        label: `option${subKey}`,
-      };
-    }),
-  };
-});
-
-const App: React.FC = () => {
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
-  return (
+import Dashboard from "../Dashboard/Dashboard";
+const { Title } = Typography;
+const App: React.FC = () => (
+  <Layout className="container">
+    <Header
+      className="header"
+      style={{ backgroundColor: "white", borderBottom: "1px solid grey" }}
+    >
+      <Title level={3}>Facturation</Title>
+    </Header>
     <Layout>
-      <Header className="header">
-        <div className="logo" />
-        {/* <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={["2"]}
-          items={items1}
-        /> */}
-        <h5>LOGO</h5>
-      </Header>
-      <Layout>
-        <Sider width={200} style={{ background: colorBgContainer }}>
-          {/* <Menu
-            mode="inline"
-            defaultSelectedKeys={["1"]}
-            defaultOpenKeys={["sub1"]}
-            style={{ height: "100%", borderRight: 0 }}
-            items={items2}
-            
-          /> */}
-          <SiderMenu />
-        </Sider>
-        <Layout style={{ padding: "0 24px 24px" }}>
-          <Breadcrumb style={{ margin: "16px 0" }}>
-            <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
-          </Breadcrumb>
-          <Content>
-            {/* affichena eto ny contenu client na dashboard rhf clickena leizy 
-            / nataoko par defaut ftsn io client ambany io ---- mapiasa props manao azy ---
-            -- ANTd by revy miainga eto a 
-            -- io ny tache-nlah io tsotra kely io aloh*/}
-            <Client />
-          </Content>
-        </Layout>
-      </Layout>
+      <Sider theme="light">
+        <SiderMenu />
+      </Sider>
+      {/* <Breadcrumb>
+        <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
+      </Breadcrumb> */}
+      <Content className="content">
+        {/* affichage par defaut */}
+        <Dashboard />
+      </Content>
     </Layout>
-  );
-};
+  </Layout>
+);
 export default App;
