@@ -1,15 +1,23 @@
-import { Card, Col, Divider, Row, Space, Typography } from "antd";
+import {
+  Anchor,
+  Card,
+  Col,
+  Descriptions,
+  Divider,
+  Row,
+  Space,
+  Steps,
+  Typography,
+} from "antd";
 import React from "react";
 import { FaMoneyCheckAlt } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa";
 import Client from "../ClientList/Client";
 
-// import "./Dasboard.scss";
-
 const Dashboard = () => {
   return (
     <>
-      <Space direction="horizontal" style={{ gap: "45px" }}>
+      <Space direction="horizontal" style={{ gap: "60px" }}>
         <Card style={{ borderLeft: "3px solid green" }}>
           <Space direction="horizontal">
             <FaMoneyCheckAlt />
@@ -30,10 +38,33 @@ const Dashboard = () => {
           </Space>
           <Typography.Title>$4567600</Typography.Title>
         </Card>
+        <Card style={{ borderLeft: "3px solid yellow" }}>
+          <Space direction="horizontal">
+            <small>Produit</small>
+          </Space>
+          <Typography.Title>+456700pdts</Typography.Title>
+        </Card>
       </Space>
       <Divider />
+      <Steps
+        current={0}
+        items={[
+          {
+            title: "SignUp",
+            description: "please complete your field of the sign up",
+          },
+          {
+            title: "buy subscribe",
+            description: "some buy",
+          },
+          {
+            title: "AutoComplete",
+            description: "successfuly",
+          },
+        ]}
+      />
 
-      <Row gutter={10}>
+      {/* <Row gutter={10}>
         <Col span={6}>
           <Card>
             <Typography.Title>card test</Typography.Title>
@@ -41,12 +72,15 @@ const Dashboard = () => {
         </Col>
         <Col span={16}>
           <Card>
-            <Typography.Title>card test</Typography.Title>
+            <Anchor>
+              <Link href="#Component-Anchor-demo-basic" title="basic demo" />
+              <Link href="#Component-Anchor-demo-static" title="basic demo" />
+              <Link href="#Client" title="API" />
+            </Anchor>
           </Card>
         </Col>
-      </Row>
-
-      {/* <Client /> */}
+      </Row> */}
+      <Client />
     </>
   );
 };

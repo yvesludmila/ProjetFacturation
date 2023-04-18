@@ -1,97 +1,101 @@
-import React from "react";
-import { Space, Table, Tag } from "antd";
-import type { ColumnsType } from "antd/es/table";
+import { faker } from "@faker-js/faker";
+import { Button, Col, Form, Input, Modal, Row, Table, Tag } from "antd";
+import ButtonGroup from "antd/es/button/button-group";
+import React, { useState } from "react";
 
-interface DataType {
-  key: string;
-  name: string;
-  contact: number;
-  codeCli: string;
-  address: string;
-  tags: string[];
-}
-
-const columns: ColumnsType<DataType> = [
-  {
-    title: "Name",
-    dataIndex: "name",
-    key: "name",
-    render: (text) => <a>{text}</a>,
-  },
-  {
-    title: "contat",
-    dataIndex: "contact",
-    key: "contact",
-  },
-  {
-    title: "codeCli",
-    dataIndex: "codeCli",
-    key: "codeCli",
-  },
-  {
-    title: "Address",
-    dataIndex: "address",
-    key: "address",
-  },
-  {
-    title: "Tags",
-    key: "tags",
-    dataIndex: "tags",
-    render: (_, { tags }) => (
-      <>
-        {tags.map((tag) => {
-          let color = tag.length > 5 ? "geekblue" : "green";
-          if (tag === "loser") {
-            color = "volcano";
-          }
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          );
-        })}
-      </>
-    ),
-  },
-  {
-    title: "Action",
-    key: "action",
-    render: (_, record) => (
-      <Space size="middle">
-        <a>Invite {record.name}</a>
-        <a>Delete</a>
-      </Space>
-    ),
-  },
-];
-
-const data: DataType[] = [
-  {
-    key: "1",
-    name: "John Brown",
-    codeCli: "CL-001",
-    contact: 345600000,
-    address: "New York",
-    tags: ["developer"],
-  },
-  {
-    key: "2",
-    name: "Jim Green",
-    codeCli: "CL-002",
-    contact: 345600000,
-    address: "London",
-    tags: ["loser"],
-  },
-  {
-    key: "3",
-    name: "Joe Black",
-    codeCli: "CL-003",
-    contact: 345600000,
-    address: "Sydney",
-    tags: ["teacher"],
-  },
-];
-
-const Client: React.FC = () => <Table columns={columns} dataSource={data} />;
+const generatData = () => {
+  const dat = [];
+  for (let i = 0; i < 8; i++) {
+    dat.push({
+      id: faker.datatype.number(50),
+      name: faker.name.fullName(),
+      address: faker.address.cityName(),
+      produit: faker.commerce.product(),
+      status: Math.random() > 0.5 ? true : false,
+    });
+  }
+  return dat;
+};
+const data = generatData();
+const Client = () => {
+  const [ModalOpen, seModalOpen] = useState(false);
+  return (
+    <div>
+      <Row gutter={10} style={{ marginTop: 10 }}>
+        <Col span={18}>
+          <Table
+            dataSource={data}
+            columns={[
+              {
+                dataIndex: "id",
+                title: "id",
+                key: "id",
+                fixed: true,
+              },
+              {
+                dataIndex: "name",
+                title: "name",
+                key: "name",
+              },
+              {
+                dataIndex: "address",
+                title: "address",
+                key: "adress",
+              },
+              {
+                dataIndex: "Produit",
+                title: "Produit",
+                key: "Produit",
+              },
+              {
+                dataIndex: "status",
+                title: "status",
+                render: (val) =>
+                  val ? <Tag>Activé</Tag> : <Tag>Non active</Tag>,
+              },
+              {
+                title: "Action",
+                render: () => (
+                  <ButtonGroup>
+                    <Button onClick={() => seModalOpen(true)}>Ajouter</Button>
+                    <Button
+                      type="primary"
+                      danger
+                      onClick={() => {
+                        Modal.confirm({
+                          title: "confirmation",
+                          content: "vous etes vraiment supprimer?",
+                        });
+                      }}
+                    >
+                      Supprimer
+                    </Button>
+                  </ButtonGroup>
+                ),
+              },
+            ]}
+          />
+        </Col>
+      </Row>
+      <Modal
+        title="Ajouter un client"
+        open={ModalOpen}
+        onCancel={() => seModalOpen(false)}
+      >
+        <Form>
+          <Form.Item label={"Nom"}>
+            <Input />
+          </Form.Item>
+          <Form.Item label={"Adress"}>
+            <Input />
+          </Form.Item>
+          <Form.Item label={"Produit"}>
+            <Input />
+          </Form.Item>
+        </Form>
+      </Modal>
+    </div>
+  );
+};
 
 export default Client;
