@@ -1,5 +1,6 @@
 import {
   Anchor,
+  Breadcrumb,
   Card,
   Col,
   Descriptions,
@@ -12,11 +13,13 @@ import {
 import React from "react";
 import { FaMoneyCheckAlt } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa";
-import Client from "../ClientList/Client";
 
 const Dashboard = () => {
   return (
     <>
+      <Breadcrumb>
+        <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
+      </Breadcrumb>
       <Space direction="horizontal" style={{ gap: "60px" }}>
         <Card style={{ borderLeft: "3px solid green" }}>
           <Space direction="horizontal">
@@ -63,6 +66,18 @@ const Dashboard = () => {
           },
         ]}
       />
+      <Card
+        title="card title"
+        style={{ marginTop: "20px", borderBottom: "3px solid gray" }}
+      >
+        <Card
+          type="inner"
+          title="Inner Card title"
+          extra={<a href="#">More</a>}
+        >
+          Inner Card content
+        </Card>
+      </Card>
 
       {/* <Row gutter={10}>
         <Col span={6}>
@@ -80,7 +95,7 @@ const Dashboard = () => {
           </Card>
         </Col>
       </Row> */}
-      <Client />
+      {/* <Client /> */}
     </>
   );
 };

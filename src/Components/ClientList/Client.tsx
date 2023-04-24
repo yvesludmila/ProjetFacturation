@@ -1,8 +1,19 @@
 import { faker } from "@faker-js/faker";
-import { Button, Col, Form, Input, Modal, Row, Table, Tag } from "antd";
+import {
+  Button,
+  Card,
+  Col,
+  Form,
+  Input,
+  Modal,
+  Row,
+  Table,
+  Tag,
+  Typography,
+} from "antd";
 import ButtonGroup from "antd/es/button/button-group";
 import React, { useState } from "react";
-
+import { Breadcrumb } from "antd";
 const generatData = () => {
   const dat = [];
   for (let i = 0; i < 8; i++) {
@@ -16,11 +27,18 @@ const generatData = () => {
   }
   return dat;
 };
+
 const data = generatData();
 const Client = () => {
   const [ModalOpen, seModalOpen] = useState(false);
   return (
     <div>
+      <Breadcrumb>
+        <Breadcrumb.Item>Client</Breadcrumb.Item>
+      </Breadcrumb>
+      <Card>
+        <Typography.Title>Liste des clients</Typography.Title>
+      </Card>
       <Row gutter={10} style={{ marginTop: 10 }}>
         <Col span={18}>
           <Table
