@@ -1,7 +1,8 @@
-import { Menu, Spin } from "antd";
-import React, { useState } from "react";
-import { MdDashboardCustomize } from "react-icons/md";
+import { Menu } from "antd";
+import React from "react";
+import { MdArticle, MdDashboardCustomize } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
+import { BsFillBasket3Fill } from "react-icons/bs";
 import { RiBillFill } from "react-icons/ri";
 import { AiFillSetting } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
@@ -26,7 +27,17 @@ const SiderMenu = () => {
             label: "Client",
           },
           {
-            key: "/acture",
+            key: "/Article",
+            icon: <MdArticle />,
+            label: "Article",
+          },
+          {
+            key: "/Achat",
+            icon: <BsFillBasket3Fill />,
+            label: "Achat",
+          },
+          {
+            key: "/Facture",
             icon: <RiBillFill />,
             label: "Facture",
           },

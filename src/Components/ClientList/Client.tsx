@@ -34,10 +34,12 @@ const Client = () => {
   return (
     <div>
       <Breadcrumb>
-        <Breadcrumb.Item>Client</Breadcrumb.Item>
+        <Breadcrumb.Item>Clients</Breadcrumb.Item>
       </Breadcrumb>
-      <Card>
-        <Typography.Title>Liste des clients</Typography.Title>
+      <Card style={{ marginTop: "20px" }}>
+        <Typography.Title style={{ fontSize: "16px" }}>
+          Liste des clients
+        </Typography.Title>
       </Card>
       <Row gutter={10} style={{ marginTop: 10 }}>
         <Col span={18}>

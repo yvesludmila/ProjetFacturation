@@ -20,7 +20,7 @@ const Dashboard = () => {
       <Breadcrumb>
         <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
       </Breadcrumb>
-      <Space direction="horizontal" style={{ gap: "60px" }}>
+      <Space direction="horizontal" style={{ gap: "60px", marginTop: "20px" }}>
         <Card style={{ borderLeft: "3px solid green" }}>
           <Space direction="horizontal">
             <FaMoneyCheckAlt />
