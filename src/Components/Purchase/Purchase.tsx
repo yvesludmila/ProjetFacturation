@@ -1,0 +1,54 @@
+import { Breadcrumb, Card, Table } from "antd";
+import React from "react";
+import type { ColumnsType } from "antd/es/table";
+interface DataType {
+  designation: string;
+  Quantite: number;
+  Date: string;
+  Prix: number;
+}
+const sharedOnCell = (_: DataType, index: number) => {
+  if (index === 1) {
+    return { colSpan: 0 };
+  }
+
+  return {};
+};
+const columns: ColumnsType<DataType> = [
+  {
+    title: "Date",
+    dataIndex: "Date",
+    rowScope: "row",
+  },
+  {
+    title: "Désignation",
+    dataIndex: "designation",
+    rowScope: "row",
+  },
+  {
+    title: "Qauntité",
+    dataIndex: "Quantite",
+    // onCell: sharedOnCell,
+  },
+  {
+    title: "Prix",
+    dataIndex: "Prix",
+  },
+];
+const Purchase = () => {
+  return (
+    <div>
+      <Breadcrumb>
+        <Breadcrumb.Item>Achat</Breadcrumb.Item>
+      </Breadcrumb>
+      <Card
+        title="Gestion achat"
+        style={{ marginTop: "20px", borderTop: "3px solid gray" }}
+      >
+        <Table columns={columns} bordered />
+      </Card>
+    </div>
+  );
+};
+
+export default Purchase;

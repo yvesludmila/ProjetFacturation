@@ -29,9 +29,9 @@ const Article = () => {
           </Form.Item>
           <Form.Item label="Unité de gestion">
             <Select style={{ width: "185px" }}>
-              <Select.Option value="mode">Carton</Select.Option>
-              <Select.Option value="mode">Boite</Select.Option>
-              <Select.Option value="mode">Piéce</Select.Option>
+              <Select.Option value="carton">Carton</Select.Option>
+              <Select.Option value="boite">Boite</Select.Option>
+              <Select.Option value="piece">Piéce</Select.Option>
             </Select>
           </Form.Item>
         </Form>
@@ -41,7 +41,6 @@ const Article = () => {
           title="Prix/unité"
           style={{
             width: "550px",
-
             borderTop: "3px solid gray",
           }}
         ></Card>

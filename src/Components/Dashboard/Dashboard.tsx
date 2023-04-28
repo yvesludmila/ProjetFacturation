@@ -13,6 +13,7 @@ import {
 import React from "react";
 import { FaMoneyCheckAlt } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa";
+import ChartBar from "../ChartBar/ChartBar";
 
 const Dashboard = () => {
   return (
@@ -66,36 +67,7 @@ const Dashboard = () => {
           },
         ]}
       />
-      <Card
-        title="card title"
-        style={{ marginTop: "20px", borderBottom: "3px solid gray" }}
-      >
-        <Card
-          type="inner"
-          title="Inner Card title"
-          extra={<a href="#">More</a>}
-        >
-          Inner Card content
-        </Card>
-      </Card>
-
-      {/* <Row gutter={10}>
-        <Col span={6}>
-          <Card>
-            <Typography.Title>card test</Typography.Title>
-          </Card>
-        </Col>
-        <Col span={16}>
-          <Card>
-            <Anchor>
-              <Link href="#Component-Anchor-demo-basic" title="basic demo" />
-              <Link href="#Component-Anchor-demo-static" title="basic demo" />
-              <Link href="#Client" title="API" />
-            </Anchor>
-          </Card>
-        </Col>
-      </Row> */}
-      {/* <Client /> */}
+      <ChartBar />
     </>
   );
 };

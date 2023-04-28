@@ -7,9 +7,29 @@ import {
   Select,
   Typography,
 } from "antd";
-import React from "react";
+import React, { useState } from "react";
 
 const Facture = () => {
+  const [inputValue, setinputValue] = useState([]);
+  const [inputData, setInputData] = useState({
+    numFact: "",
+    lib: "",
+    ref: "",
+  });
+
+  const Change = () => {
+    setinputValue({ ...inputValue });
+  };
+  console.log(inputData);
+  console.log(inputValue);
+
+  const handleChange = (e: any) => {
+    e.preventDefault(e);
+    setInputData({ ...inputData, [e.target.numFact]: e.target.value });
+    setInputData({ ...inputData, [e.target.lib]: e.target.value });
+    setInputData({ ...inputData, [e.target.ref]: e.target.value });
+  };
+
   return (
     <div>
       <Breadcrumb>
@@ -28,17 +48,15 @@ const Facture = () => {
           <Form
             style={{ maxWidth: 1000, display: "flex", gap: "20px" }}
             layout="vertical"
-            //   labelCol={{ span: 4 }}
-            //   wrapperCol={{ span: 14 }}
           >
             <Form.Item label="N° Facture">
-              <Input type="number" />
+              <Input value={inputData.numFact} onChange={handleChange} />
             </Form.Item>
             <Form.Item label="Libelé">
-              <Input />
+              <Input value={inputData.lib} onChange={handleChange} />
             </Form.Item>
             <Form.Item label="Reférence">
-              <Input />
+              <Input value={inputData.ref} onChange={handleChange} />
             </Form.Item>
           </Form>
 
@@ -55,13 +73,13 @@ const Facture = () => {
 
             <Form.Item label="Mode de paiment">
               <Select style={{ width: "185px" }}>
-                <Select.Option value="mode">Espéce</Select.Option>
-                <Select.Option value="mode">Chéque</Select.Option>
-                <Select.Option value="mode">Banque</Select.Option>
+                <Select.Option value="ESPECE">Espéce</Select.Option>
+                <Select.Option value="CHEQUE">Chéque</Select.Option>
+                <Select.Option value="BANQUE">Banque</Select.Option>
               </Select>
             </Form.Item>
           </Form>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" onClick={Change}>
             Valider
           </Button>
         </Card>
@@ -75,8 +93,8 @@ const Facture = () => {
           }}
         >
           <Typography>
-            <Typography.Paragraph>N°: 0004</Typography.Paragraph>
-            <Typography.Paragraph>Libélé: meuble</Typography.Paragraph>
+            <Typography.Paragraph>N°: {inputData.numFact}</Typography.Paragraph>
+            <Typography.Paragraph>Libélé: {inputData.lib}</Typography.Paragraph>
             <Typography.Paragraph>Reference: 003acd</Typography.Paragraph>
             <Typography.Paragraph>Condition: 3 mois</Typography.Paragraph>
             <Typography.Paragraph>Date: 00/04/23</Typography.Paragraph>
