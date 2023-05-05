@@ -1,15 +1,4 @@
-import {
-  Anchor,
-  Breadcrumb,
-  Card,
-  Col,
-  Descriptions,
-  Divider,
-  Row,
-  Space,
-  Steps,
-  Typography,
-} from "antd";
+import { Breadcrumb, Card, Divider, Space, Spin, Typography } from "antd";
 import React from "react";
 import { FaMoneyCheckAlt } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa";
@@ -21,6 +10,7 @@ const Dashboard = () => {
       <Breadcrumb>
         <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
       </Breadcrumb>
+
       <Space direction="horizontal" style={{ gap: "60px", marginTop: "20px" }}>
         <Card style={{ borderLeft: "3px solid green" }}>
           <Space direction="horizontal">
@@ -50,23 +40,6 @@ const Dashboard = () => {
         </Card>
       </Space>
       <Divider />
-      <Steps
-        current={0}
-        items={[
-          {
-            title: "SignUp",
-            description: "please complete your field of the sign up",
-          },
-          {
-            title: "buy subscribe",
-            description: "some buy",
-          },
-          {
-            title: "AutoComplete",
-            description: "successfuly",
-          },
-        ]}
-      />
       <ChartBar />
     </>
   );

@@ -6,6 +6,7 @@ interface DataType {
   Quantite: number;
   Date: string;
   Prix: number;
+  Total: number;
 }
 const sharedOnCell = (_: DataType, index: number) => {
   if (index === 1) {
@@ -31,8 +32,12 @@ const columns: ColumnsType<DataType> = [
     // onCell: sharedOnCell,
   },
   {
-    title: "Prix",
+    title: "Prix unitaire",
     dataIndex: "Prix",
+  },
+  {
+    title: "Total",
+    dataIndex: "Total",
   },
 ];
 const Purchase = () => {

@@ -17,7 +17,6 @@ const App: React.FC = () => (
       <Sider theme="light">
         <SiderMenu />
       </Sider>
-
       <Content className="content">
         <AppRoutes />
       </Content>

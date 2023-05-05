@@ -1,5 +1,5 @@
-import { Menu } from "antd";
-import React from "react";
+import { Menu, Spin } from "antd";
+import React, { useState } from "react";
 import { MdArticle, MdDashboardCustomize } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
 import { BsFillBasket3Fill } from "react-icons/bs";
@@ -8,7 +8,7 @@ import { AiFillSetting } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 const SiderMenu = () => {
   const navigate = useNavigate();
-  // const [loading, setLoading] = useState(false);
+
   return (
     <div>
       <Menu

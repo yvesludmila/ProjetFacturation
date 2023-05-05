@@ -10,26 +10,32 @@ import {
 import React, { useState } from "react";
 
 const Facture = () => {
-  const [inputValue, setinputValue] = useState([]);
-  const [inputData, setInputData] = useState({
+  // const [inputValue, setinputValue] = useState([]);
+  // const [inputData, setInputData] = useState({
+  //   numFact: "",
+  //   lib: "",
+  //   ref: "",
+  // });
+
+  // const Change = () => {
+  //   setinputValue({ ...inputValue });
+  // };
+  const [state, setState] = useState({
     numFact: "",
     lib: "",
     ref: "",
   });
 
-  const Change = () => {
-    setinputValue({ ...inputValue });
-  };
-  console.log(inputData);
-  console.log(inputValue);
-
   const handleChange = (e: any) => {
-    e.preventDefault(e);
-    setInputData({ ...inputData, [e.target.numFact]: e.target.value });
-    setInputData({ ...inputData, [e.target.lib]: e.target.value });
-    setInputData({ ...inputData, [e.target.ref]: e.target.value });
-  };
+    setState(e.target.value);
+    // setState({ ...state, [e.target.numFact]: e.target.value });
+    // setState({ ...state, [e.target.lib]: e.target.value });
+    // setState({ ...state, [e.target.ref]: e.target.value });
 
+    // setInputData({ ...inputData, [e.target.numFact]: e.target.value });
+    // setInputData({ ...inputData, [e.target.lib]: e.target.value });
+    // setInputData({ ...inputData, [e.target.ref]: e.target.value });
+  };
   return (
     <div>
       <Breadcrumb>
@@ -50,13 +56,13 @@ const Facture = () => {
             layout="vertical"
           >
             <Form.Item label="N° Facture">
-              <Input value={inputData.numFact} onChange={handleChange} />
+              <Input onChange={handleChange} value={state.numFact} />
             </Form.Item>
             <Form.Item label="Libelé">
-              <Input value={inputData.lib} onChange={handleChange} />
+              <Input onChange={handleChange} value={state.lib} />
             </Form.Item>
             <Form.Item label="Reférence">
-              <Input value={inputData.ref} onChange={handleChange} />
+              <Input onChange={handleChange} value={state.ref} />
             </Form.Item>
           </Form>
 
@@ -79,7 +85,7 @@ const Facture = () => {
               </Select>
             </Form.Item>
           </Form>
-          <Button type="primary" htmlType="submit" onClick={Change}>
+          <Button type="primary" htmlType="submit">
             Valider
           </Button>
         </Card>
@@ -93,9 +99,9 @@ const Facture = () => {
           }}
         >
           <Typography>
-            <Typography.Paragraph>N°: {inputData.numFact}</Typography.Paragraph>
-            <Typography.Paragraph>Libélé: {inputData.lib}</Typography.Paragraph>
-            <Typography.Paragraph>Reference: 003acd</Typography.Paragraph>
+            <Typography.Paragraph>N°: {state.numFact}</Typography.Paragraph>
+            <Typography.Paragraph>Libélé: {state.lib} </Typography.Paragraph>
+            <Typography.Paragraph>Reference: {state.ref} </Typography.Paragraph>
             <Typography.Paragraph>Condition: 3 mois</Typography.Paragraph>
             <Typography.Paragraph>Date: 00/04/23</Typography.Paragraph>
             <Typography.Paragraph>Paiment: éspece</Typography.Paragraph>
