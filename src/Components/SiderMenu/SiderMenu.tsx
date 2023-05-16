@@ -5,6 +5,8 @@ import { FaUsers } from "react-icons/fa";
 import { BsFillBasket3Fill } from "react-icons/bs";
 import { RiBillFill } from "react-icons/ri";
 import { AiFillSetting } from "react-icons/ai";
+import { BsBorderStyle } from "react-icons/bs";
+import { BsFillHandbagFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 const SiderMenu = () => {
   const navigate = useNavigate();
@@ -30,6 +32,16 @@ const SiderMenu = () => {
             key: "/Article",
             icon: <MdArticle />,
             label: "Article",
+          },
+          {
+            key: "/Commande",
+            icon: <BsBorderStyle />,
+            label: "Commande",
+          },
+          {
+            key: "/Produit",
+            icon: <BsFillHandbagFill />,
+            label: "Produit",
           },
           {
             key: "/Achat",

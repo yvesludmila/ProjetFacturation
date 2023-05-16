@@ -142,16 +142,16 @@ const Client = () => {
       nom: "TEST",
       Adress: "TEST",
     },
-    {
-      id: "2",
-      nom: "abab",
-      Adress: "add",
-    },
-    {
-      id: "3",
-      nom: "azerty",
-      Adress: "add",
-    },
+    // {
+    //   id: "2",
+    //   nom: "abab",
+    //   Adress: "add",
+    // },
+    // {
+    //   id: "3",
+    //   nom: "azerty",
+    //   Adress: "add",
+    // },
   ]);
   const columns = [
     {
@@ -217,6 +217,10 @@ const Client = () => {
     setIsEditing(true);
     setEditingClient({ ...record });
   };
+  const creatNewClient = (record: any) => {
+    setIsEditing(true);
+    setEditingClient({ ...record });
+  };
   return (
     <div>
       <Breadcrumb>
@@ -228,12 +232,12 @@ const Client = () => {
       >
         <Table bordered columns={columns} dataSource={dataSource}></Table>
         <GoDiffAdded
-          onClick={addClient}
+          onClick={creatNewClient}
           style={{ width: 25, height: 25, margin: "10px" }}
         />
         {/* <Button onClick={addClient}>Ajouter</Button> */}
         <Modal
-          title="Ajouter un nouveau client"
+          title="Modifier le client"
           visible={isEditing}
           onCancel={() => {
             setIsEditing(false);
