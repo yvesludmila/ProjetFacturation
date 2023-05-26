@@ -7,7 +7,6 @@ import {
   Form,
   Input,
   Select,
-  Table,
   Typography,
 } from "antd";
 import Title from "antd/es/typography/Title";
@@ -16,24 +15,27 @@ import FactureCli from "./FactureCli";
 import RecoveryFact from "./RecoveryFact";
 import InvoiceFooter from "./InvoiceFooter";
 import { BsFillPrinterFill } from "react-icons/bs";
-const { Text } = Typography;
+import FilterClient from "./FlilterClient/FilterClient";
 const Facture = () => {
   const [inputArray, setInputArray] = useState([]);
-  const [state, setState] = useState({ numFact: "", lib: "" });
+  const [state, setState] = useState({ numFact: "", lib: "", prix: "" });
   const handleChange = (e: any) => {
     // e.preventDefault(e);
     setState({ ...state, [e.target.numFact]: e.target.value });
     setState({ ...state, [e.target.lib]: e.target.value });
+    setState({ ...state, [e.target.prix]: e.target.value });
   };
+  const onFinish = (values: any) => {
+    console.log("Received values of form: ", values);
+  };
+
   const Change = () => {
     setInputArray([...inputArray]);
     console.log(inputArray);
     console.log(state);
   };
-
   //DRAWER
   const [open, setOpen] = useState(false);
-
   const showDrawer = () => {
     setOpen(true);
   };
@@ -52,7 +54,7 @@ const Facture = () => {
           title="Géstion des facture"
           style={{
             marginTop: "20px",
-            borderTop: "3px solid gray",
+            borderTop: "3px solid #3ba0e9",
             width: "650px",
             height: "320px",
           }}
@@ -60,15 +62,25 @@ const Facture = () => {
           <Form
             style={{ maxWidth: 1000, display: "flex", gap: "20px" }}
             layout="vertical"
+            onFinish={onFinish}
           >
-            <Form.Item label="N° Facture">
+            <Form.Item
+              label="N° Facture"
+              rules={[{ required: true, message: "completer la fromulaire" }]}
+            >
               <Input onChange={handleChange} value={state.numFact} /> <br />
             </Form.Item>
-            <Form.Item label="Libelé">
+            <Form.Item
+              label="Libelé"
+              rules={[{ required: true, message: "completer la fromulaire" }]}
+            >
               <Input onChange={handleChange} value={state.lib} /> <br />
             </Form.Item>
-            <Form.Item label="Prix unitaire">
-              <Input onChange={handleChange} /> <br />
+            <Form.Item
+              label="Prix unitaire"
+              rules={[{ required: true, message: "completer la fromulaire" }]}
+            >
+              <Input onChange={handleChange} value={state.prix} /> <br />
             </Form.Item>
           </Form>
 
@@ -76,15 +88,22 @@ const Facture = () => {
             style={{ maxWidth: 1000, display: "flex", gap: "20px" }}
             layout="vertical"
           >
-            <Form.Item label="Condition de paiment">
+            <Form.Item
+              label="Condition de paiment"
+              rules={[{ required: true, message: "completer la fromulaire" }]}
+            >
               <Input />
             </Form.Item>
             <Form.Item label="Date">
               <Input type="date" style={{ width: "185px" }} />
             </Form.Item>
-            <Form.Item label="Mode de paiment">
+            <Form.Item
+              label="Mode de paiment"
+              rules={[{ required: true, message: "completer la fromulaire" }]}
+            >
               <Select style={{ width: "185px" }}>
                 <Select.Option value="ESPECE">Espéce</Select.Option>
+                <Select.Option value="ESPECE">PayPal</Select.Option>
                 <Select.Option value="CHEQUE">Chéque</Select.Option>
                 <Select.Option value="BANQUE">Banque</Select.Option>
               </Select>
@@ -94,16 +113,12 @@ const Facture = () => {
             <Button type="primary" htmlType="submit" onClick={Change}>
               Valider
             </Button>
-            <Button
-              type="primary"
-              style={{ marginLeft: "20px" }}
-              onClick={showDrawer}
-            >
+            <Button style={{ marginLeft: "20px" }} onClick={showDrawer}>
               Voir facture
             </Button>
           </div>
         </Card>
-
+        <FilterClient />
         <Drawer
           title="Fermer"
           placement="right"
@@ -115,7 +130,7 @@ const Facture = () => {
             <Card
               style={{
                 width: 300,
-                border: "2px solid gray",
+                border: "2px solid #3ba0e9",
                 borderRadius: "30px",
               }}
             >
@@ -131,7 +146,7 @@ const Facture = () => {
                   Mail: <a>madacreativeagency@gmail.com</a>
                 </Typography.Paragraph>
                 <Typography.Paragraph style={{ margin: 0 }}>
-                  Gerant: Ambina HARISON
+                  Gérant: Ambina HARISON
                 </Typography.Paragraph>
                 <Typography.Paragraph style={{ margin: 0 }}>
                   Tel: +261 33 09 193 89

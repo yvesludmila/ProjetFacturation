@@ -56,7 +56,7 @@ const Order = () => {
       </Breadcrumb>
       <Card
         title="Gestion des commandes"
-        style={{ marginTop: "20px", borderTop: "3px solid gray" }}
+        style={{ marginTop: "20px", borderTop: "3px solid #3ba0e9" }}
       >
         <Table columns={columns} bordered />
       </Card>

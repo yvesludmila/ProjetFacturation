@@ -5,19 +5,11 @@ import { Typography } from "antd";
 import "../Style/Dashboard.scss";
 import SiderMenu from "../SiderMenu/SiderMenu";
 import AppRoutes from "../AppRoutes/AppRoutes";
-
-const { Title } = Typography;
-
+import NavBar from "./NavBar";
+import FooterBar from "./FooterBar";
 const App: React.FC = () => (
   <Layout className="container">
-    <Header
-      className="header"
-      style={{
-        backgroundColor: "white",
-      }}
-    >
-      <Title level={3}>Facturation</Title>
-    </Header>
+    <NavBar />
     <Layout>
       <Sider theme="light">
         <SiderMenu />
@@ -26,6 +18,7 @@ const App: React.FC = () => (
         <AppRoutes />
       </Content>
     </Layout>
+    <FooterBar />
   </Layout>
 );
 export default App;

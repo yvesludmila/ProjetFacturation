@@ -11,7 +11,7 @@ const Article = () => {
         title="Gestion article"
         style={{
           marginTop: "20px",
-          borderTop: "3px solid gray",
+          borderTop: "3px solid #3ba0e9",
         }}
       >
         <Form
@@ -41,14 +41,14 @@ const Article = () => {
           title="Prix/unité"
           style={{
             width: "550px",
-            borderTop: "3px solid gray",
+            borderTop: "3px solid #3ba0e9",
           }}
         ></Card>
         <Card
           title="Condition de vente et achat"
           style={{
             width: "550px",
-            borderTop: "3px solid gray",
+            borderTop: "3px solid #3ba0e9",
           }}
         ></Card>
       </div>

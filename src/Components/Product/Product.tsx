@@ -14,12 +14,12 @@ const Product = () => {
         <Card
           style={{
             width: 300,
-            borderBottom: "3px solid blue",
+            borderBottom: "3px solid #3ba0e9",
           }}
         >
           {" "}
           <h4>
-            Titre: <span>Lait en poudre</span>{" "}
+            Titre: <span>Créative meet</span>{" "}
           </h4>
           <p>
             {" "}
@@ -39,7 +39,7 @@ const Product = () => {
         >
           {" "}
           <h4>
-            Titre: <span>materiel de bureau</span>{" "}
+            Titre: <span>géstion de facture</span>{" "}
           </h4>
           <p>
             {" "}

@@ -48,7 +48,7 @@ const Purchase = () => {
       </Breadcrumb>
       <Card
         title="Gestion achat"
-        style={{ marginTop: "20px", borderTop: "3px solid gray" }}
+        style={{ marginTop: "20px", borderTop: "3px solid #3ba0e9" }}
       >
         <Table columns={columns} bordered />
       </Card>
