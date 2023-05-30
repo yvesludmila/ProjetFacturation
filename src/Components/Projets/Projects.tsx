@@ -3,7 +3,7 @@ import { MdDelete } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
 import React from "react";
 
-const Product = () => {
+const Projects = () => {
   return (
     <div>
       <Breadcrumb>
@@ -51,4 +51,4 @@ const Product = () => {
     </div>
   );
 };
-export default Product;
+export default Projects;

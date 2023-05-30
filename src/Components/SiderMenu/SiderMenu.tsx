@@ -1,5 +1,5 @@
 import { Menu, Spin } from "antd";
-import React, { useState } from "react";
+import React from "react";
 import { MdArticle, MdDashboardCustomize } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
 import { BsFillBasket3Fill } from "react-icons/bs";
@@ -36,12 +36,12 @@ const SiderMenu = () => {
           {
             key: "/Commande",
             icon: <BsBorderStyle />,
-            label: "Commande",
+            label: "Commandes",
           },
           {
-            key: "/Produit",
+            key: "/Projects",
             icon: <BsFillHandbagFill />,
-            label: "Produit",
+            label: "Projets",
           },
           {
             key: "/Achat",

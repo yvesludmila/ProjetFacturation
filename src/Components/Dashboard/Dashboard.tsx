@@ -26,17 +26,17 @@ const Dashboard = () => {
           </Space>
           <Typography.Title>+400prs</Typography.Title>
         </Card>
-        <Card style={{ borderLeft: "3px solid red" }}>
+        {/* <Card style={{ borderLeft: "3px solid red" }}>
           <Space direction="horizontal">
             <small>Stock</small>
           </Space>
           <Typography.Title>$4567600</Typography.Title>
-        </Card>
+        </Card> */}
         <Card style={{ borderLeft: "3px solid yellow" }}>
           <Space direction="horizontal">
-            <small>Produit</small>
+            <small>Projets</small>
           </Space>
-          <Typography.Title>+456700pdts</Typography.Title>
+          <Typography.Title>+45Projet</Typography.Title>
         </Card>
       </Space>
       <Divider />

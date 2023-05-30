@@ -5,8 +5,9 @@ import Client from "../ClientList/Client";
 import Facture from "../Facture/Facture";
 import Article from "../Article/Article";
 import Purchase from "../Purchase/Purchase";
-import Product from "../Product/Product";
+
 import Order from "../Orders/Order";
+import Projects from "../Projets/Projects";
 
 const AppRoutes = () => {
   return (
@@ -14,7 +15,7 @@ const AppRoutes = () => {
       <Route path="/" element={<Dashboard />} />
       <Route path="/Client" element={<Client />} />
       <Route path="/Facture" element={<Facture />} />
-      <Route path="/Produit" element={<Product />} />
+      <Route path="/Projects" element={<Projects />} />
       <Route path="/Article" element={<Article />} />
       <Route path="/Commande" element={<Order />} />
       <Route path="/Achat" element={<Purchase />} />
