@@ -10,12 +10,14 @@ import {
   Typography,
 } from "antd";
 import Title from "antd/es/typography/Title";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import FactureCli from "./FactureCli";
 import RecoveryFact from "./RecoveryFact";
 import InvoiceFooter from "./InvoiceFooter";
 import { BsFillPrinterFill } from "react-icons/bs";
 import FilterClient from "./FlilterClient/FilterClient";
+import { useReactToPrint } from "react-to-print";
+
 const Facture = () => {
   const [inputArray, setInputArray] = useState([]);
   const [state, setState] = useState({ numFact: "", lib: "", prix: "" });
@@ -43,6 +45,15 @@ const Facture = () => {
   const onClose = () => {
     setOpen(false);
   };
+
+  // converted in pdf
+
+  const componentRef: any = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+    documentTitle: "emp-data",
+    onAfterPrint: () => alert("PRINT SUCCES"),
+  });
 
   return (
     <div>
@@ -119,69 +130,72 @@ const Facture = () => {
           </div>
         </Card>
         <FilterClient />
-        <Drawer
-          title="Fermer"
-          placement="right"
-          onClose={onClose}
-          open={open}
-          size="large"
-        >
-          <Card title="FACTURE">
-            <Card
-              style={{
-                width: 300,
-                border: "2px solid #3ba0e9",
-                borderRadius: "30px",
-              }}
-            >
-              <Typography style={{ textAlign: "center" }}>
-                <Title level={5}>MADA CREATIVE AGENCY</Title>
-                <Typography.Paragraph style={{ margin: 0 }}>
-                  Lot UV 178 Bis Miandrarivo
-                </Typography.Paragraph>
-                <Typography.Paragraph style={{ margin: 0 }}>
-                  Tananarive 101, Madagascar
-                </Typography.Paragraph>
-                <Typography.Paragraph style={{ margin: 0 }}>
-                  Mail: <a>madacreativeagency@gmail.com</a>
-                </Typography.Paragraph>
-                <Typography.Paragraph style={{ margin: 0 }}>
-                  Gérant: Ambina HARISON
-                </Typography.Paragraph>
-                <Typography.Paragraph style={{ margin: 0 }}>
-                  Tel: +261 33 09 193 89
-                </Typography.Paragraph>
-              </Typography>
+        <div>
+          <Drawer
+            title="Fermer"
+            placement="right"
+            onClose={onClose}
+            open={open}
+            size="large"
+          >
+            <Card title="FACTURE" ref={componentRef}>
+              <Card
+                style={{
+                  width: 300,
+                  border: "2px solid #3ba0e9",
+                  borderRadius: "30px",
+                }}
+              >
+                <Typography style={{ textAlign: "center" }}>
+                  <Title level={5}>MADA CREATIVE AGENCY</Title>
+                  <Typography.Paragraph style={{ margin: 0 }}>
+                    Lot UV 178 Bis Miandrarivo
+                  </Typography.Paragraph>
+                  <Typography.Paragraph style={{ margin: 0 }}>
+                    Tananarive 101, Madagascar
+                  </Typography.Paragraph>
+                  <Typography.Paragraph style={{ margin: 0 }}>
+                    Mail: <a>madacreativeagency@gmail.com</a>
+                  </Typography.Paragraph>
+                  <Typography.Paragraph style={{ margin: 0 }}>
+                    Gérant: Ambina HARISON
+                  </Typography.Paragraph>
+                  <Typography.Paragraph style={{ margin: 0 }}>
+                    Tel: +261 33 09 193 89
+                  </Typography.Paragraph>
+                </Typography>
+              </Card>
+              <Divider />
+              <FactureCli />
+              <RecoveryFact />
+              <div style={{ marginTop: "40px" }}>
+                <Typography>
+                  <Typography.Paragraph style={{ margin: 0 }}>
+                    <strong>Arrétér a la somme de:</strong> un dollars
+                  </Typography.Paragraph>
+                  <Typography.Paragraph style={{ margin: 0 }}>
+                    <strong>condition de réglement:</strong> par virement PayPal
+                    au compte de <a href="/">madacreativeagency@gmail.com</a>
+                  </Typography.Paragraph>
+                </Typography>
+              </div>
+              <InvoiceFooter />
             </Card>
-            <Divider />
-            <FactureCli />
-            <RecoveryFact />
-            <div style={{ marginTop: "40px" }}>
-              <Typography>
-                <Typography.Paragraph style={{ margin: 0 }}>
-                  <strong>Arrétér a la somme de:</strong> un dollars
-                </Typography.Paragraph>
-                <Typography.Paragraph style={{ margin: 0 }}>
-                  <strong>condition de réglement:</strong> par virement PayPal
-                  au compte de <a href="/">madacreativeagency@gmail.com</a>
-                </Typography.Paragraph>
-              </Typography>
+            <div style={{ margin: "50px" }}>
+              <Button
+                style={{
+                  padding: "5px",
+                  alignItems: "center",
+                  width: "120px",
+                }}
+                onClick={handlePrint}
+              >
+                {" "}
+                <BsFillPrinterFill style={{ marginRight: "12px" }} /> Imprimer
+              </Button>
             </div>
-            <InvoiceFooter />
-          </Card>
-          <div style={{ margin: "50px" }}>
-            <Button
-              style={{
-                padding: "5px",
-                alignItems: "center",
-                width: "120px",
-              }}
-            >
-              {" "}
-              <BsFillPrinterFill style={{ marginRight: "12px" }} /> Imprimer
-            </Button>
-          </div>
-        </Drawer>
+          </Drawer>
+        </div>
       </div>
     </div>
   );
