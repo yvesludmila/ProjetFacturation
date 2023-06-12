@@ -5,9 +5,11 @@ import {
   Divider,
   Drawer,
   Form,
+  Image,
   Input,
   Select,
   Typography,
+  message,
 } from "antd";
 import Title from "antd/es/typography/Title";
 import React, { useRef, useState } from "react";
@@ -46,13 +48,19 @@ const Facture = () => {
     setOpen(false);
   };
 
-  // converted in pdf
+  // PRINT FACTURE
+  const [messageApi, contextHolder] = message.useMessage();
 
   const componentRef: any = useRef();
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
     documentTitle: "emp-data",
-    onAfterPrint: () => alert("PRINT SUCCES"),
+    onAfterPrint: () => {
+      messageApi.open({
+        type: "success",
+        content: "Impression avec succes",
+      });
+    },
   });
 
   return (
@@ -165,6 +173,10 @@ const Facture = () => {
                   </Typography.Paragraph>
                 </Typography>
               </Card>
+              <Image
+                width={100}
+                src="https://www.google.com/search?q=mada+creative+agency&rlz=1C1XXVF_frMG954MG963&sxsrf=APwXEdcin1-UfqCp5bREhSTqsnwqUc7LZQ:1686573581087&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiq572Z4L3_AhWhQkEAHQ9BA6UQ_AUoAXoECAEQAw&biw=1366&bih=578&dpr=1#imgrc=fFsFuBM5F8R8HM"
+              />
               <Divider />
               <FactureCli />
               <RecoveryFact />
@@ -182,6 +194,7 @@ const Facture = () => {
               <InvoiceFooter />
             </Card>
             <div style={{ margin: "50px" }}>
+              {contextHolder}
               <Button
                 style={{
                   padding: "5px",

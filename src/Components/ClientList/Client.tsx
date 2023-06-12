@@ -49,7 +49,7 @@ const Client = () => {
     },
     {
       key: "2",
-      title: "nom",
+      title: "Personne||société",
       dataIndex: "nom",
       filteredValue: [search],
       onFilter: (value: any, record: any) => {
