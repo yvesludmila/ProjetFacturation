@@ -6,12 +6,13 @@ const ProjectDone = () => {
     <>
       <Space>
         <Badge.Ribbon text="Hippies">
-          <Card
-            title="Projet"
-            size="small"                    
-            style={{ width: 300 }}
-          >
-        description
+          <Card title="Projet" size="small" style={{ width: 300 }}>
+            description
+          </Card>
+        </Badge.Ribbon>
+        <Badge.Ribbon text="Hippies">
+          <Card title="Projet" size="small" style={{ width: 300 }}>
+            description
           </Card>
         </Badge.Ribbon>
       </Space>
