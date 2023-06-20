@@ -111,6 +111,13 @@ const ClientTable: React.FC = () => {
       dataIndex: 'nif',
       key: 'nif',
     },
+   
+    {
+      title: 'xx',
+      dataIndex: 'xxx',
+      key: 'xxx',
+    },
+
     {
       title: 'Actions',
       key: 'actions',
