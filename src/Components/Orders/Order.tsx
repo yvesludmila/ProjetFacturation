@@ -10,13 +10,6 @@ interface DataType {
   Prix: number;
   Total: number;
 }
-const sharedOnCell = (_: DataType, index: number) => {
-  if (index === 1) {
-    return { colSpan: 0 };
-  }
-
-  return {};
-};
 const columns: ColumnsType<DataType> = [
   {
     title: "N°",
@@ -36,7 +29,6 @@ const columns: ColumnsType<DataType> = [
   {
     title: "Qauntité",
     dataIndex: "Quantite",
-    // onCell: sharedOnCell,
   },
   {
     title: "Prix unitaire",
