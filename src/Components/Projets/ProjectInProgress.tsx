@@ -1,4 +1,4 @@
-import { Card, Rate, Typography } from "antd";
+import { Card, Divider, Rate, Typography } from "antd";
 import React from "react";
 import DescriptionModals from "./TourDescription/DescriptionModals";
 
@@ -15,7 +15,6 @@ const ProjectInProgress = () => {
           Site de rencontre entre les personnes qui passionner au technologie.{" "}
         </Text>
         <Rate allowHalf defaultValue={2.5} />
-
         <DescriptionModals />
       </Card>
     </>

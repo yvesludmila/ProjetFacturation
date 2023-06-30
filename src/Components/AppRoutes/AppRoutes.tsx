@@ -8,6 +8,7 @@ import Purchase from "../Purchase/Purchase";
 
 import Order from "../Orders/Order";
 import Projects from "../Projets/Projects";
+import ProjectInProgress from "../Projets/ProjectInProgress";
 
 const AppRoutes = () => {
   return (
@@ -19,6 +20,7 @@ const AppRoutes = () => {
       <Route path="/Article" element={<Article />} />
       <Route path="/Commande" element={<Order />} />
       <Route path="/Achat" element={<Purchase />} />
+      <Route path="/En_cours" element={<ProjectInProgress />} />
     </Routes>
   );
 };
