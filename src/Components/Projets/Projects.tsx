@@ -1,47 +1,81 @@
-import { Breadcrumb, Divider, Menu, Select, Tabs } from "antd";
+import {
+  Breadcrumb,
+  Divider,
+  Dropdown,
+  MenuProps,
+  Skeleton,
+  Space,
+  Tabs,
+} from "antd";
 import ProjectDone from "./ProjectDone";
 import ProjectInProgress from "./ProjectInProgress";
+import { DownOutlined } from "@ant-design/icons";
+import ProjectList from "./ProjectList";
+import { useState } from "react";
 const Projects = () => {
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const showSkeleton = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  };
+  const items: MenuProps["items"] = [
+    {
+      label: "Avec deadline",
+      key: "0",
+    },
+    {
+      label: "A long terme",
+      key: "1",
+    },
+  ];
+
   return (
     <div>
       <Breadcrumb>
         <Breadcrumb.Item>Projets</Breadcrumb.Item>
       </Breadcrumb>
-      <Divider />
+      <Divider style={{ margin: 0 }} />
 
-      <Tabs defaultActiveKey="tab1">
-        <Tabs.TabPane tab="tab1" key="tab1">
-          <div>test1</div>
+      <Tabs defaultActiveKey="tab1" onTabClick={showSkeleton}>
+        <Tabs.TabPane tab="Projets" disabled={loading} key="tab1">
+          <Skeleton loading={loading}>
+            <div>
+              <ProjectList />
+            </div>
+          </Skeleton>
         </Tabs.TabPane>
-        <Tabs.TabPane tab="En Cours" key="tab2">
-          <div style={{ display: "flex", gap: 20 }}>
-            <ProjectInProgress />
-            <ProjectInProgress />
-          </div>
+        <Tabs.TabPane tab="En Cours" disabled={loading} key="tab2">
+          <Skeleton loading={loading}>
+            <div style={{ display: "flex", gap: 20 }}>
+              <ProjectInProgress />
+              <ProjectInProgress />
+            </div>
+          </Skeleton>
         </Tabs.TabPane>
-        <Tabs.TabPane tab="Réaliser" key="tab3">
-          <div>
-            <ProjectDone />
-          </div>
-          <div>
-            <ProjectDone />
-          </div>
+        <Tabs.TabPane tab="Réaliser" disabled={loading} key="tab3">
+          <Skeleton loading={loading}>
+            <div>
+              <ProjectDone />
+            </div>
+            <div>
+              <ProjectDone />
+            </div>
+          </Skeleton>
         </Tabs.TabPane>
-
         <Tabs.TabPane
           tab={
-            <Select style={{ width: 200 }}>
-              <Select.Option value="a_long_terme">A long terme</Select.Option>
-              <Select.Option value="deadline">avec deadline</Select.Option>
-            </Select>
+            <Dropdown menu={{ items }} trigger={["click"]}>
+              <Space>
+                selectioner
+                <DownOutlined />
+              </Space>
+            </Dropdown>
           }
           key="tab4"
-        >
-          <div>
-            {" "}
-            <ProjectDone />
-          </div>
-        </Tabs.TabPane>
+        ></Tabs.TabPane>
       </Tabs>
     </div>
   );
